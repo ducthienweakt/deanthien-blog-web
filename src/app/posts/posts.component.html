@@ -1,0 +1,5 @@
+
+<div *ngFor="let post of posts">
+  <h4>{{post.attributes.Title}}</h4>
+  <p [innerHTML]="post.attributes.Content"></p>
+</div>
