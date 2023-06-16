@@ -1,0 +1,410 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.wrapper {
+	width: 100%;
+	height: 100vh;
+	background-color: rgb(213, 253, 247);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.container{
+	--ground-color:#8a6a40;
+	--anim-speed:570ms;
+
+	width: 100%;
+	height: 320px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.man {
+	--skin-light-color:#fbc2a7;
+	--skin-dark-color:#ffb898;
+	--skin-darker-color:#f5af8e;
+	--hat-color:#3b3a3b;
+	--glasses-color:#5a5a5a;
+	--shoes-color:#ffffff;
+	--cloth-light-color:#f64231;
+	--cloth-dark-color:#d64134;
+	--cloth-darker-color:#b63e33;
+
+	position: relative;
+	width: 200px;
+	height: 280px;
+	animation: BodyAnim var(--anim-speed) ease 0s infinite;
+}
+
+/* ------ B O D Y ----------------------------- */
+.body{
+	position: relative;
+	width: 51px;
+	height: 103px;
+	top:110px;
+	left:73px;
+	background-color: var(--cloth-dark-color);
+	border-radius: 50px;
+}
+
+/* ------ H E A D ----------------------------- */
+.head {
+	position: relative;
+	top: -100px;
+	left: -30px;
+	width: 96px;
+	height: 97px;
+	background-color: var(--skin-dark-color);
+	border-radius: 50px 40px 30px 68px;
+	transform-origin: bottom;
+	animation: HeadAnim var(--anim-speed) ease 0s infinite;
+}
+
+.head .hat {
+	position: absolute;
+	top: -8px;
+	left: -4px;
+	width: 102px;
+	height: 48px;
+	background-color: var(--hat-color);
+	border-radius: 42px 41px 0px 5px;
+	transform: rotate(-3deg);
+}
+.head .hat::after {
+	content: "";
+	position: absolute;
+	top: 39px;
+	left: 51px;
+	width: 82px;
+	height: 9px;
+	background-color:  var(--hat-color);
+	border-radius: 0px 7px 4px 0px;
+}
+.head .glasses {
+	position: absolute;
+	top: 43px;
+	left: 90px;
+	width: 11px;
+	height: 24px;
+	background-color: var(--glasses-color);
+	border-radius: 10px 6px 6px 15px;
+}
+.head .glasses::after {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: -60px;
+	width: 68px;
+	height: 3px;
+	background-color: var(--glasses-color);
+}
+.head .ear {
+	position: absolute;
+	top: 45px;
+	left: 27px;
+	width: 17px;
+	height: 24px;
+	background-color: var(--skin-light-color);
+	border-radius: 6px 9px 4px 12px;
+	border-left: solid 4px var(--skin-darker-color);
+}
+.head .mouth {
+	position: absolute;
+	top: 75px;
+	left: 82px;
+	width: 10px;
+	height: 8px;
+	background-color: #a6452a;
+	border-radius: 8px 10px 21px 13px;
+}
+
+
+
+
+
+/* ------ A R M S ----------------------------- */
+.arm {
+	position: absolute;
+	top: 5px;
+	left: 14px;
+	width: 32px;
+	height: 63px;
+	background-color: var(--cloth-light-color);
+	border-radius: 50px;
+	transform-origin: 50% 15px;
+}
+.arm .lower-arm {
+	position: absolute;
+	top: 35px;
+	left: 2px;
+	width: 29px;
+	height: 55px;
+	background-color: var(--cloth-light-color);
+	border-radius: 50px;
+	transform-origin: 50% 16px;
+}
+.arm .lower-arm::after {
+	/*Hand*/
+	content: "";
+	position: absolute;
+	top: 60px;
+	left: 6px;
+	width: 22px;
+	height: 19px;
+	background-color: var(--skin-light-color);
+	border-radius: 9px 12px 6px 7px;
+}
+.arm.left {
+	z-index: -1;
+	left: 0px;
+	background-color: var(--cloth-darker-color);
+}
+.arm.left .lower-arm {
+	background-color: var(--cloth-darker-color);
+}
+/* rotations */
+.arm.right {
+	transform: rotate(-55deg);
+	animation: RightArmAnim var(--anim-speed) ease 0s infinite;
+}
+.arm.right .lower-arm {
+	transform: rotate(-66deg);
+	animation: RightLowerArmAnim var(--anim-speed) ease 0s infinite;
+}
+.arm.left {
+	transform: rotate(86deg);
+	animation: LeftArmAnim var(--anim-speed) ease 0s infinite;
+}
+.arm.left .lower-arm {
+	transform: rotate(-66deg);
+	animation: LeftLowerArmAnim var(--anim-speed) ease 0s infinite;
+}
+
+
+
+
+/* ------ L E G S ----------------------------- */
+.leg {
+	position: absolute;
+	top: 62px;
+	left: 6px;
+	width: 41px;
+	height: 73px;
+	background-color: var(--cloth-dark-color);
+	border-radius: 50px;
+	transform-origin: 50% 20px;
+}
+.leg .lower-leg {
+	position: absolute;
+	top: 35px;
+	left: 2px;
+	width: 38px;
+	height: 80px;
+	background-color: var(--cloth-dark-color);
+	border-radius: 20px 20px 4px 4px;
+	transform-origin: 50% 20px;
+	transform: rotate(3deg);
+}
+.leg .lower-leg::after {
+	/*Shoes*/
+	content: "";
+	position: absolute;
+	top: 84px;
+	left: 5px;
+	width: 44px;
+	height: 13px;
+	background-color: var(--shoes-color);
+	border: solid 1px rgba(0,0,0,30%);
+	border-bottom: solid 4px rgba(184, 184, 184, 0.986);
+	border-radius: 5px 13px 6px 7px;
+}
+.leg.left {
+	z-index: -1;
+	background-color: var(--cloth-darker-color);
+}
+.leg.left .lower-leg {
+	background-color: var(--cloth-darker-color);
+}
+/* rotations */
+.leg.right {
+	transform: rotate(29deg);
+	animation: RightLegAnim var(--anim-speed) ease 0s infinite;
+}
+.leg.right .lower-leg {
+	transform: rotate(66deg);
+	animation: RightLowerLegAnim var(--anim-speed) ease 0s infinite;
+}
+.leg.left {
+	transform: rotate(-70deg);
+	animation: LeftLegAnim var(--anim-speed) ease 0s infinite;
+}
+.leg.left .lower-leg {
+	transform: rotate(24deg);
+	animation: LeftLowerLegAnim var(--anim-speed) ease 0s infinite;
+}
+
+
+/* Animations---------------------------------------*/
+/*Body*/
+@keyframes BodyAnim {
+	from { transform: translateY(-15px) rotate(25deg); }
+	25%   { transform: translateY(-0px) rotate(25deg);	}
+	50% { transform: translateY(-12px) rotate(25deg); }
+	75%   { transform: translateY(-0px) rotate(25deg);	}
+	to   {transform: translateY(-15px) rotate(25deg); }
+}
+/*Head*/
+@keyframes HeadAnim {
+	from { transform: translateY(1px) rotate(-15deg); }
+	25%   { transform: translateY(-0px) rotate(-19deg);	}
+	50% { transform: translateY(-1px) rotate(-15deg); }
+	75%   { transform: translateY(-0px) rotate(-10deg);	}
+	to   {transform: translateY(1px) rotate(-15deg); }
+}
+/*Arms*/
+@keyframes RightArmAnim {
+	from { transform: rotate(-60deg); }
+	50%   { transform: rotate(60deg);	}
+	to   { transform: rotate(-60deg); }
+}
+@keyframes RightLowerArmAnim {
+	from { transform: rotate(-45deg); }
+	50%   { transform: rotate(-120deg);	}
+	to   { transform: rotate(-45deg); }
+}
+
+
+@keyframes LeftArmAnim {
+	from { transform: rotate(80deg); }
+	50%   { transform: rotate(-60deg);	}
+	to   { transform: rotate(80deg); }
+}
+@keyframes LeftLowerArmAnim {
+	from { transform: rotate(-80deg); }
+	50%   { transform: rotate(-60deg);	}
+	to   { transform: rotate(-80deg); }
+}
+
+/*Legs*/
+@keyframes RightLegAnim {
+	from { transform: rotate(60deg); }
+	50%   { transform: rotate(-100deg);	}
+	to   { transform: rotate(60deg); }
+}
+@keyframes RightLowerLegAnim {
+	from { transform: rotate(45deg); }
+	50%   { transform: rotate(35deg);	}
+	to   { transform: rotate(45deg); }
+}
+
+
+@keyframes LeftLegAnim {
+	from { transform: rotate(-90deg); }
+	50%   { transform: rotate(80deg);	}
+	to   { transform: rotate(-90deg); }
+}
+@keyframes LeftLowerLegAnim {
+	from { transform: rotate(45deg); }
+	50%   { transform: rotate(35deg);	}
+	to   { transform: rotate(45deg); }
+}
+
+
+
+
+/*---- G R O U N D ----------------------------------*/
+.ground{
+	position: absolute;
+	background-color: var(--ground-color);
+	align-self: flex-end;
+	width: 100%;
+	height: 300px;
+	transform: translateY(100%);
+}
+
+
+
+/*---- C L O U D ----------------------------------*/
+.cloud{
+	position: absolute;
+	background-color: #fff;
+	width: 180px;
+	height: 100px;
+	border-radius: 80px;
+	z-index: -1;
+	animation: CloudAnim 50s linear 0s infinite;
+}
+.cloud::before{
+	content: "";
+	position: absolute;
+	top: -40px;
+	left: 56px;
+	background-color: #fff;
+	width: 140px;
+	height: 140px;
+	border-radius: 80px;
+}
+.cloud::after{
+	content: "";
+	position: absolute;
+	top: 33px;
+	left: 107px;
+	background-color: #fff;
+	width: 131px;
+	height: 67px;
+	border-radius: 80px;
+}
+
+.cloud.c1{
+	top:80px;
+	opacity: .6;
+	animation-duration: 50s;
+}
+.cloud.c2{
+	top:180px;
+	opacity: .4;
+	animation-duration: 80s;
+}
+.cloud.c3{
+	top:100px;
+	opacity: .2;
+	animation-duration: 120s;
+}
+
+@keyframes CloudAnim {
+	from { transform: translateX(800px); }
+	to   { transform: translateX(-800px); }
+}
+
+
+
+/*---- R O C K S ----------------------------------*/
+.rock{
+	position: absolute;
+	background-color: var(--ground-color);
+	height: 100px;
+	border-radius: 80px;
+	animation: RockAnim calc( var(--anim-speed) * 3 ) linear 0s infinite;
+}
+.rock.rk1{
+	top:-3px;
+	width: 180px;
+}
+.rock.rk2{
+	top: -5px;
+	left: 900px;
+	width: 295px;
+	border-radius: 14px 110px 0px 0px;
+}
+
+@keyframes RockAnim {
+	from { transform: translateX(1200px); }
+	to   { transform: translateX(-1200px); }
+}
