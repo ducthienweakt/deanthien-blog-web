@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "optimization": true,
+            "aot": true,
             "outputPath": "dist/deanthien-blog-web",
             "index": "src/index.html",
             "main": "src/main.ts",
