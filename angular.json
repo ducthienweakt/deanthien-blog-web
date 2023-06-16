@@ -19,7 +19,7 @@
           "options": {
             "optimization": true,
             "aot": true,
-            "outputPath": "dist/deanthien-blog-web",
+            "outputPath": "dist/chaydi",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
