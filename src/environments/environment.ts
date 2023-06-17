@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     appUrl: 'http://localhost:4200',
-    apiUrl: 'http://localhost:1337/api',
+    apiUrl: 'https://chaydi-524abe5b3fd9.herokuapp.com/api',
     botThoApi: 'http://localhost:4200/botApi',
     stravaConfig: {
       "access_token"  : '',

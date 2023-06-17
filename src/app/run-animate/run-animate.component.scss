@@ -76,6 +76,16 @@
 	background-color: var(--hat-color);
 	border-radius: 42px 41px 0px 5px;
 	transform: rotate(-3deg);
+	.name{
+		position: absolute;
+		color: #fff;
+		margin-top: 25px;
+		font-size: 13px;
+		text-align: center;
+		width: 100px;
+		font-family: "Dosis";
+		font-weight: 600;
+	}
 }
 .head .hat::after {
 	content: "";
@@ -338,7 +348,7 @@
 	width: 180px;
 	height: 100px;
 	border-radius: 80px;
-	z-index: -1;
+	z-index: 0;
 	animation: CloudAnim 50s linear 0s infinite;
 }
 .cloud::before{

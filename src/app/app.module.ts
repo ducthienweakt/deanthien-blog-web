@@ -10,6 +10,8 @@ import { StravaAuthComponent } from './strava-auth/strava-auth.component';
 import { SettingsComponent } from './settings/settings.component';
 import { StravaInterceptor } from './strava-interceptor';
 import { RunAnimateComponent } from './run-animate/run-animate.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ConnectStravaComponent } from './welcome/connect-strava/connect-strava.component';
 
 @NgModule({
   declarations: [
@@ -18,18 +20,22 @@ import { RunAnimateComponent } from './run-animate/run-animate.component';
     LoginStravaComponent,
     StravaAuthComponent,
     SettingsComponent,
-    RunAnimateComponent
+    RunAnimateComponent,
+    WelcomeComponent,
+    ConnectStravaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: StravaInterceptor,
-    multi: true
-  }],
+  providers: [
+  //   {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: StravaInterceptor,
+  //   multi: true
+  // }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

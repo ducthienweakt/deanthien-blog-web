@@ -1,0 +1,14 @@
+{
+    "liveSassCompile.settings.excludeList": [
+        "/**/node_modules/**",
+        "/.vscode/**",
+        "/.angular/",
+        "/dist/",
+        "/node_modules/"
+    ],
+    "files.exclude": {
+        "**/.angular": true,
+        "**/dist": true,
+        "**/node_modules": true
+    }
+}
