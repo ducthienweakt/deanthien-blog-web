@@ -1,7 +1,42 @@
-<div>
-  <p>Thơ máy</p>
-  <button (click)="generatePoem()"> phọt thơ</button>
+<div class="container mt-3">
+  <legend>Settings</legend>
+  <div class="row">
+    <div class="col col-md-12">
+      <form [formGroup]="settingsForm" (ngSubmit)="updateSettings()">
+        <div class="mb-2 form-check">
+          <input class="form-check-input" type="checkbox" formControlName="hasTitle" id="hasTitle">
+          <label for="hasTitle" class="form-label">Has Title</label>
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title" />
+        </div>
+        <div class="mb-2 form-check">
+          <input class="form-check-input" type="checkbox" formControlName="hasPoem" id="hasPoem">
+          <label for="hasPoem" class="form-label">Has Poem</label>
+        </div>
+        <div class="mb-3">
+          <label for="poemSubject" class="form-label">Chủ đề</label>
+          <select class="form-select  mb-3"  formControlName="poemSubject">
+            <option value="">Chọn chủ đề</option>
+            <option *ngFor="let subject of poemSubjects" [ngValue]="subject">
+              {{ subject.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="poemType" class="form-label">Thể Thơ</label>
+          <select class="form-select  mb-3"  formControlName="poemType" >
+            <option value="">Chọn thể thơ</option>
+            <option *ngFor="let poem of poemTypes" [ngValue]="poem">
+              {{ poem.name }}
+            </option>
+          </select>
+        </div>
 
-  <button (click)="subscription()">subscription </button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+  </div>
 </div>
-

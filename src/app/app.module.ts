@@ -12,6 +12,7 @@ import { StravaInterceptor } from './strava-interceptor';
 import { RunAnimateComponent } from './run-animate/run-animate.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ConnectStravaComponent } from './welcome/connect-strava/connect-strava.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ConnectStravaComponent } from './welcome/connect-strava/connect-strava.
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
   //   {
