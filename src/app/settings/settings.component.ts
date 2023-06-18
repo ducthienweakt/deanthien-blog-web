@@ -105,11 +105,13 @@ export class SettingsComponent implements OnInit {
     if(this.stravaSettings.id){
       this.httpClient.put(environment.apiUrl + '/strava-settings/'+this.stravaSettings.id,{data:data}).subscribe((stravaResponse: any) => {
         this.stravaSettings = stravaResponse.data;
+        window.alert("Cập nhật thành công!")
       });
     }
     else{
       this.httpClient.post(environment.apiUrl + '/strava-settings',{data:data}).subscribe((stravaResponse: any) => {
         this.stravaSettings = stravaResponse.data;
+        window.alert("Cập nhật thành công!")
       });
     }
 
