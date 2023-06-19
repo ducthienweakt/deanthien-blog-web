@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -136,21 +135,8 @@ export class SettingsComponent implements OnInit {
     let poemType = this.settingsForm.value.poemType.value;
     let poemSubject =  this.settingsForm.value.poemSubject.value
 
-    const formData = new FormData();
-    formData.append('theloai', "tho");
-    formData.append('poemSubject', "amthuc.dat");
-    formData.append('poemType', poemType);
-    formData.append('fullbaitho', poemSubject);
-    formData.append('order', '0');
-    var result = "";
-    this.httpClient.post(environment.botThoApi, formData, { responseType: 'text' }).subscribe(data => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, 'text/html');
-      result = doc.querySelectorAll('.contain-2 .paragraph')[0].innerHTML;
-      //result = result.replace(/<[^>]*>?/gm, '');
-      //result = result.replace(/&nbsp;/g, '');
-      //result = result+ '- thơ được làm bởi con AI';
-      this.poemPreview = result;
+    this.httpClient.get(environment.apiUrl+'/generate-poem?poemType='+poemType+"&poemSubject="+poemSubject).subscribe((result:any) => {
+      this.poemPreview = result.data.replace(/\n/g, "<br />");
     })
   }
 

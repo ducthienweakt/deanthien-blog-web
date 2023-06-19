@@ -1,8 +1,0 @@
-{
-    "/botApi":{
-        "target":"http://thomay.vn/thomay/index.php?q=tungcau",
-        "secure": false,
-        "changeOrigin": false,
-        "logLevel": "debug"
-    }
-}
