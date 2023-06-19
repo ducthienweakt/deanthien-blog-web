@@ -9,19 +9,20 @@
         </div>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" formControlName="title" (change)="onChangeTitle()"/>
+          <input type="text" class="form-control" id="title" formControlName="title" (change)="onChangeTitle()" />
         </div>
 
         <div class="mt-3 mb-2 form-check">
           <input class="form-check-input" type="checkbox" formControlName="hasWeather" id="hasWeather">
-          <label for="hasWeather" class="form-label">Has Weather (get this location if activity has no lat, lon value)</label>
+          <label for="hasWeather" class="form-label">Has Weather (get this location if activity has no lat, lon
+            value)</label>
         </div>
         <div class="mb-3 row">
-          <div class="col col-md-6">  
+          <div class="col col-md-6">
             <label for="lat" class="form-label">Latitude</label>
             <input type="text" class="form-control" id="lat" formControlName="lat" />
           </div>
-          <div class="col col-md-6">  
+          <div class="col col-md-6">
             <label for="lon" class="form-label">Longtitude</label>
             <input type="text" class="form-control" id="lon" formControlName="lon" />
           </div>
@@ -33,7 +34,7 @@
         </div>
         <div class="mb-3">
           <label for="poemSubject" class="form-label">Chủ đề</label>
-          <select class="form-select  mb-3"  formControlName="poemSubject" (change)="generatePoem()">
+          <select class="form-select  mb-3" formControlName="poemSubject" (change)="generatePoem()">
             <option value="">Chọn chủ đề</option>
             <option *ngFor="let subject of poemSubjects" [ngValue]="subject">
               {{ subject.name }}
@@ -42,7 +43,7 @@
         </div>
         <div class="mb-3">
           <label for="poemType" class="form-label">Thể Thơ</label>
-          <select class="form-select  mb-3"  formControlName="poemType" (change)="generatePoem()">
+          <select class="form-select  mb-3" formControlName="poemType" (change)="generatePoem()">
             <option value="">Chọn thể thơ</option>
             <option *ngFor="let poem of poemTypes" [ngValue]="poem">
               {{ poem.name }}
@@ -55,14 +56,24 @@
     </div>
 
   </div>
-  <div class="row mt-3">
-    <legend>Preview</legend>
-    <p class="h4 mb-2">{{titlePreview}}</p>
-    <p *ngIf="settingsForm.value.hasWeather">Chất lượng không khí: 🟡 Trung bình - 87 USAQI, phù hợp easy run dưới 2 giờ.
-      <br>
-      Nhiệt độ 31°C, độ ẩm 66%, sức gió 13km/h.
-    </p>
+  <div class="row row row-cols-3 row-cols-md-3 mb-3 mt-3">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">Preview</div>
+        <div class="card-body">
+          <p class="h4 mb-2">{{titlePreview}}</p>
+          <p *ngIf="settingsForm.value.hasWeather">Chất lượng không khí: 🟡 Trung bình - 87 USAQI, phù hợp easy run dưới 2
+            giờ.
+            <br>
+            Nhiệt độ 31°C, độ ẩm 66%, sức gió 13km/h.
+          </p>
     
-    <div class="mb-3" *ngIf="settingsForm.value.hasPoem" [innerHTML]="poemPreview"></div>
+          <div class="mb-3" *ngIf="settingsForm.value.hasPoem" [innerHTML]="poemPreview"></div>
+        </div>
+    
+      </div>
+    </div>
   </div>
+  
+
 </div>
