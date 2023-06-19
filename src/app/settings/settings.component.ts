@@ -32,6 +32,7 @@ export class SettingsComponent implements OnInit {
     private cdr: ChangeDetectorRef) { }
 
   poemPreview="";
+  titlePreview:any="";
   stravaSettings: any = {};
   token: any = ""
   settingsForm = new FormGroup({
@@ -97,6 +98,7 @@ export class SettingsComponent implements OnInit {
         });
       }
       this.generatePoem();
+      this.onChangeTitle();
     });
   }
 
@@ -150,6 +152,11 @@ export class SettingsComponent implements OnInit {
       //result = result+ '- thơ được làm bởi con AI';
       this.poemPreview = result;
     })
+  }
+
+  onChangeTitle(){
+    this.titlePreview = this.settingsForm.value.title?.replace('{{time}}',"sáng");
+    this.titlePreview = this.titlePreview.replace('{{distance}}',"10");
   }
 
 }

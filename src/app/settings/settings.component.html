@@ -9,7 +9,7 @@
         </div>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" formControlName="title" />
+          <input type="text" class="form-control" id="title" formControlName="title" (change)="onChangeTitle()"/>
         </div>
 
         <div class="mt-3 mb-2 form-check">
@@ -57,7 +57,7 @@
   </div>
   <div class="row mt-3">
     <legend>Preview</legend>
-    <p class="h4 mb-2">{{settingsForm.value.title}}</p>
+    <p class="h4 mb-2">{{titlePreview}}</p>
     <p *ngIf="settingsForm.value.hasWeather">Chất lượng không khí: 🟡 Trung bình - 87 USAQI, phù hợp easy run dưới 2 giờ.
       <br>
       Nhiệt độ 31°C, độ ẩm 66%, sức gió 13km/h.
