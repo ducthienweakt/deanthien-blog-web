@@ -12,9 +12,7 @@ app.use(express.static('./dist/chaydi'));
 
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/chaydi/'}),
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"),
-    res.header("Access-Control-Allow-Origin", '*')
+    res.sendFile('index.html', {root: 'dist/chaydi/'})
 );
 
 // Start the app by listening on the default Heroku port
