@@ -2,7 +2,7 @@ export const environment = {
     production: false,
     appUrl: 'http://chaydi.fun',
     apiUrl: 'https://chaydi-524abe5b3fd9.herokuapp.com/api',
-    botThoApi: 'http://chaydi.fun//botApi',
+    botThoApi: 'http://thomay.vn/thomay/index.php?q=tungcau',
     stravaConfig: {
       "access_token"  : '',
       "client_id"     : "108204",
