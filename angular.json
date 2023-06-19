@@ -67,8 +67,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "deanthien-blog-web:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "deanthien-blog-web:build:production"
             },
             "development": {
               "browserTarget": "deanthien-blog-web:build:development"
