@@ -31,6 +31,7 @@ export class SettingsComponent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef) { }
 
+  poemPreview="";
   stravaSettings: any = {};
   token: any = ""
   settingsForm = new FormGroup({
@@ -39,6 +40,9 @@ export class SettingsComponent implements OnInit {
     hasPoem: new FormControl(true),
     poemType: new FormControl(),
     poemSubject: new FormControl(),
+    hasWeather: new FormControl(true),
+    lat: new FormControl(),
+    lon: new FormControl()
   });
   poemTypes = POEM_TYPES;
   poemSubjects = POEM_SUBJECTS;
@@ -77,7 +81,10 @@ export class SettingsComponent implements OnInit {
           title: this.stravaSettings.attributes.title_format,
           hasPoem: this.stravaSettings.attributes.has_poem,
           poemType: this.poemTypes.find(p=>p.value==this.stravaSettings.attributes.poem_type),
-          poemSubject: this.poemSubjects.find(p=>p.value==this.stravaSettings.attributes.poem_subject)
+          poemSubject: this.poemSubjects.find(p=>p.value==this.stravaSettings.attributes.poem_subject),
+          hasWeather: this.stravaSettings.attributes.has_weather,
+          lat: this.stravaSettings.attributes.lat,
+          lon: this.stravaSettings.attributes.lon
         });
       } else {
         this.settingsForm.patchValue({
@@ -85,9 +92,11 @@ export class SettingsComponent implements OnInit {
           title: "ăn {{time}} {{distance}} que!",
           hasPoem: true,
           poemType: this.poemTypes[0],
-          poemSubject: this.poemSubjects[0]
+          poemSubject: this.poemSubjects[0],
+          hasWeather: true,
         });
       }
+      this.generatePoem();
     });
   }
 
@@ -99,7 +108,10 @@ export class SettingsComponent implements OnInit {
       title_format: formValue.title,
       has_poem: formValue.hasPoem,
       poem_type: formValue.poemType.value,
-      poem_subject: formValue.poemSubject.value
+      poem_subject: formValue.poemSubject.value,
+      has_weather: formValue.hasWeather,
+      lat: formValue.lat,
+      lon: formValue.lon,
     }
 
     if(this.stravaSettings.id){
@@ -115,6 +127,29 @@ export class SettingsComponent implements OnInit {
       });
     }
 
+  }
+
+
+  generatePoem() {
+    let poemType = this.settingsForm.value.poemType.value;
+    let poemSubject =  this.settingsForm.value.poemSubject.value
+
+    const formData = new FormData();
+    formData.append('theloai', "tho");
+    formData.append('poemSubject', "amthuc.dat");
+    formData.append('poemType', poemType);
+    formData.append('fullbaitho', poemSubject);
+    formData.append('order', '0');
+    var result = "";
+    this.httpClient.post(environment.botThoApi, formData, { responseType: 'text' }).subscribe(data => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+      result = doc.querySelectorAll('.contain-2 .paragraph')[0].innerHTML;
+      //result = result.replace(/<[^>]*>?/gm, '');
+      //result = result.replace(/&nbsp;/g, '');
+      //result = result+ '- thơ được làm bởi con AI';
+      this.poemPreview = result;
+    })
   }
 
 }
